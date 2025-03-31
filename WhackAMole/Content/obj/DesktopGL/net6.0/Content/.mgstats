@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Enemy.png","C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/bin/DesktopGL/Content/Enemy.xnb","TextureProcessor","Texture2DContent",42407,141317,0.1214413
+"C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Hammer.png","C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/bin/DesktopGL/Content/Hammer.xnb","TextureProcessor","Texture2DContent",37719,701405,0.017861
+"C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Hole.png","C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/bin/DesktopGL/Content/Hole.xnb","TextureProcessor","Texture2DContent",21921,473685,0.0142031
+"C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Mole.png","C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/bin/DesktopGL/Content/Mole.xnb","TextureProcessor","Texture2DContent",18536,140541,0.0075355
+"C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/RangerMole.png","C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/bin/DesktopGL/Content/RangerMole.xnb","TextureProcessor","Texture2DContent",20164,102613,0.0075384
