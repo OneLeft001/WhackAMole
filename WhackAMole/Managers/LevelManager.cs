@@ -415,7 +415,7 @@ namespace WhackAMole
             {
 
             }
-            else
+            else // other
             {
 
             }
