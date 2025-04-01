@@ -121,6 +121,14 @@ namespace WhackAMole
             ClickEnemy();
 
 
+            // Check player score for difficulty increase
+            // Easy: 0-10, Medium: 10-25, Hard: 25+
+            // When a threshold is met, EnemyPool must hold more threatening enemies
+            // This implies that the pool will need to be cleared & new instances of enemies created
+            increaseDifficulty();
+
+
+
         }
 
         public void draw(SpriteBatch spriteBatch)
@@ -395,6 +403,24 @@ namespace WhackAMole
 
         }
        
+
+        private void increaseDifficulty()
+        {
+
+            if (_playerScore >= 10 && _playerScore < 25) // Medium difficulty
+            {
+
+            }
+            else if (_playerScore > 25) // Hard difficulty
+            {
+
+            }
+            else
+            {
+
+            }
+
+        }
 
 
     }
