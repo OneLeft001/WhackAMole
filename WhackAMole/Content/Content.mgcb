@@ -25,6 +25,13 @@
 /processorParam:TextureFormat=Color
 /build:Enemy.png
 
+#begin Fonts/gameFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/gameFont.spritefont
+
 #begin Hammer.png
 /importer:TextureImporter
 /processor:TextureProcessor

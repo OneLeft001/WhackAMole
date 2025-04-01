@@ -28,3 +28,5 @@ C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\refint\WhackAMole
 C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\WhackAMole.pdb
 C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\WhackAMole.genruntimeconfig.cache
 C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\ref\WhackAMole.dll
+C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\bin\Debug\net6.0\Content\Fonts\gameFont.xnb
+C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\WhackAMole.sourcelink.json

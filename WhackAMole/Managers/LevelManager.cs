@@ -36,6 +36,7 @@ namespace WhackAMole
         private float spawnAreaPositionX = (screenWidth / 2) - (spawnAreaWidth / 2);
         private float spawnAreaPositionY = (screenHeight / 2) - (spawnAreaHeight /2);
 
+        private SpriteFont _font;
         private int _playerScore  = 0;
 
         private bool holesPlaced = false;
@@ -64,6 +65,7 @@ namespace WhackAMole
         public void loadContent(ContentManager content)
         {
 
+            _font = content.Load<SpriteFont>("Fonts/gameFont");
 
             foreach (Hole hole in _holePool.getHolesNotPlaced()) 
             {
@@ -147,7 +149,7 @@ namespace WhackAMole
                 }
             }
 
-
+            spriteBatch.DrawString(_font, "Testing Message!!", Vector2.Zero, Color.White);
 
         }
 

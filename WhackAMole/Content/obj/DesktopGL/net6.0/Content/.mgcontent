@@ -5,12 +5,14 @@
   <Config />
   <SourceFiles>
     <File>C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Enemy.png</File>
+    <File>C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Fonts/gameFont.spritefont</File>
     <File>C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Hammer.png</File>
     <File>C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Hole.png</File>
     <File>C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/Mole.png</File>
     <File>C:/Dev/MonoGameProjects/WhackAMole/WhackAMole/Content/RangerMole.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
