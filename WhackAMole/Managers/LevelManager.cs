@@ -149,7 +149,7 @@ namespace WhackAMole
                 }
             }
 
-            spriteBatch.DrawString(_font, "Testing Message!!", Vector2.Zero, Color.White);
+            spriteBatch.DrawString(_font, "Score: " + _playerScore, new Vector2(screenWidth / 2, 70), Color.GhostWhite);
 
         }
 
