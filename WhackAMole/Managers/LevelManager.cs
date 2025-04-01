@@ -36,6 +36,8 @@ namespace WhackAMole
         private float spawnAreaPositionX = (screenWidth / 2) - (spawnAreaWidth / 2);
         private float spawnAreaPositionY = (screenHeight / 2) - (spawnAreaHeight /2);
 
+        private int _playerScore  = 0;
+
         private bool holesPlaced = false;
 
        
@@ -359,6 +361,8 @@ namespace WhackAMole
                         enemy.setPosition(new Vector2(1000, 1000));
 
                         _mouseReleased = false;
+
+                        _playerScore += 1;
 
                     }
 
