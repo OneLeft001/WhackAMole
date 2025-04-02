@@ -22,7 +22,7 @@ namespace WhackAMole.ObjectPools
         private List<Enemy> activeEnemies;
 
         private int numberOfEnemies = 5;
-        private int _difficultyLevel;
+        public int DifficultyLevel { get; set; }
 
         private void initilize() 
         {
@@ -65,7 +65,7 @@ namespace WhackAMole.ObjectPools
         private void initilizeEnemies()
         {
 
-            switch (_difficultyLevel) 
+            switch (DifficultyLevel) 
             {
             
                 case 0:// Starting level

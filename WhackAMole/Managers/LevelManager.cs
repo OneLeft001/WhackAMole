@@ -38,7 +38,6 @@ namespace WhackAMole
 
         private SpriteFont _font;
         private int _playerScore  = 0;
-        private int _difficultyNum = 0;
 
         private bool holesPlaced = false;
 
@@ -55,7 +54,7 @@ namespace WhackAMole
             _holePool.initilize();
 
             _enemyPool = new EnemyPool();
-            
+            _enemyPool.DifficultyLevel = 0;
 
             //holes.Add(new Hole());
 
@@ -408,22 +407,22 @@ namespace WhackAMole
         private void increaseDifficulty()
         {
 
-            if (_playerScore > 10 && _playerScore < 25 && _difficultyNum == 0) // Medium difficulty
+            if (_playerScore > 10 && _playerScore < 25 && _enemyPool.DifficultyLevel == 0) // Medium difficulty
             {
 
                 // Change Enemy Pool to have more bomb enemies
                 // Increse _difficultyNum to 1
 
-                _difficultyNum = 1;
+                _enemyPool.DifficultyLevel = 1;
 
             }
-            else if (_playerScore > 25 && _difficultyNum == 1) // Hard difficulty
+            else if (_playerScore > 25 && _enemyPool.DifficultyLevel == 1) // Hard difficulty
             {
 
                 // Change Enemy Pool to hold Ranger Moles
                 // Increase _difficultyNum to 2
 
-                _difficultyNum = 2;
+                _enemyPool.DifficultyLevel = 2;
 
             }
             else // other
