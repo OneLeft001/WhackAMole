@@ -22,6 +22,7 @@ namespace WhackAMole.ObjectPools
         private List<Enemy> activeEnemies;
 
         private int numberOfEnemies = 5;
+        private int _difficultyLevel;
 
         private void initilize() 
         {
@@ -34,12 +35,14 @@ namespace WhackAMole.ObjectPools
             for (int i = 0; i < numberOfEnemies; i++) 
             {
                 inactiveEnemies.Add(new Mole(_moleTexture));
-                inactiveEnemies.Add(new Bomb(_bombTexture));
+                //inactiveEnemies.Add(new Bomb(_bombTexture));
                 //inactiveEnemies.Add(new Enemy(_moleTexture));
                 //inactiveEnemies.Add(new Enemy(_bombTexture));
                 //inactiveEnemies.Add(new Enemy(_rangerMoleTexture));
 
             }
+
+            initilizeEnemies();
 
         }
 
@@ -56,6 +59,30 @@ namespace WhackAMole.ObjectPools
 
         public List<Enemy> getActiveEnemies() {  return activeEnemies; }
         public List<Enemy> getInactiveEnemies() { return inactiveEnemies; }
+
+
+
+        private void initilizeEnemies()
+        {
+
+            switch (_difficultyLevel) 
+            {
+            
+                case 0:// Starting level
+                    break;
+                case 1:// Level Increase 1
+                    break;
+                case 2:// Level Increase 2
+                    break;
+
+                default:
+                    break;
+
+            }
+
+        }
+
+
 
     }
 
