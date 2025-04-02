@@ -21,8 +21,23 @@ namespace WhackAMole.ObjectPools
         private List<Enemy> inactiveEnemies;
         private List<Enemy> activeEnemies;
 
-        private int numberOfEnemies = 5;
+        private int numberOfEnemies = 7;
         public int DifficultyLevel { get; set; }
+
+        enum mediumLevel
+        {
+            moleEnemies = 5,
+            bombEnemies = 5,
+
+
+        }
+        enum hardLevel
+        {
+            moleEnemies = 5,
+            bombEnemies = 5,
+            rangerMoleEnemies = 5
+        }
+
 
         private void initilize() 
         {
