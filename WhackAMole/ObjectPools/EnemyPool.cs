@@ -71,6 +71,7 @@ namespace WhackAMole.ObjectPools
                 case 0:// Starting level
                     break;
                 case 1:// Level Increase 1
+                    clearEnemiesLists();
                     break;
                 case 2:// Level Increase 2
                     break;
@@ -79,6 +80,14 @@ namespace WhackAMole.ObjectPools
                     break;
 
             }
+
+        }
+
+        private void clearEnemiesLists()
+        {
+
+            activeEnemies.Clear();
+            inactiveEnemies.Clear();
 
         }
 
