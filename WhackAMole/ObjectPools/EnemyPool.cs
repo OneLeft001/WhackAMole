@@ -35,15 +35,15 @@ namespace WhackAMole.ObjectPools
         enum mediumLevel
         {
             moleEnemies = 5,
-            bombEnemies = 5,
+            bombEnemies = 6,
 
 
         }
         enum hardLevel
         {
             moleEnemies = 5,
-            bombEnemies = 5,
-            rangerMoleEnemies = 5
+            bombEnemies = 6,
+            rangerMoleEnemies = 7
         }
         
 
@@ -94,14 +94,17 @@ namespace WhackAMole.ObjectPools
             
                 case 0:// Starting level
                     //var enumVal =
-                    foreach(Enum enemyType in Enum.GetValues(typeof(easyLevel)))
+                    foreach(string enemyType in Enum.GetNames(typeof(easyLevel)))
                     {
-                        var grabtype = enemyType.GetType().ToString();
-                        Debug.WriteLine(enemyType);
-                        Debug.WriteLine(grabtype);
+                        //var grabtype = enemyType.GetType().ToString();
+                        //Debug.WriteLine(enemyType);
+                        //Debug.WriteLine(grabtype);
                         
-                        for (int i = 0; i < 4; i++)
+                        
+                        for (int i = 0; i < 5; i++)
                         {
+
+                            validateEnemyType(enemyType);
 
                         }
                     }
@@ -127,13 +130,26 @@ namespace WhackAMole.ObjectPools
 
         }
 
-        private void validateEnemyType(Enum enemyType)
+        private void validateEnemyType(string enemyType)
         {
 
             switch (enemyType)
             {
 
+                case easyLevel.moleEnemies.ToString():
+                case mediumLevel.moleEnemies:
+                case hardLevel.moleEnemies:
+                    break;
 
+                case mediumLevel.bombEnemies:
+                case hardLevel.bombEnemies:
+                    break;
+
+                case hardLevel.rangerMoleEnemies:
+                    break;
+
+                default:
+                    break;
 
             }
 
