@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,13 @@ namespace WhackAMole.ObjectPools
         private int numberOfEnemies = 7;
         public int DifficultyLevel { get; set; }
 
+        enum easyLevel
+        {
+            moleEnemies = 5,
+            
+            
+            
+        }
         enum mediumLevel
         {
             moleEnemies = 5,
@@ -37,7 +45,7 @@ namespace WhackAMole.ObjectPools
             bombEnemies = 5,
             rangerMoleEnemies = 5
         }
-
+        
 
         private void initilize() 
         {
@@ -68,6 +76,7 @@ namespace WhackAMole.ObjectPools
             _bombTexture = content.Load<Texture2D>("Enemy");
             _rangerMoleTexture = content.Load<Texture2D>("RangerMole");
 
+            DifficultyLevel = 0;
             initilize();
 
         }
@@ -84,6 +93,18 @@ namespace WhackAMole.ObjectPools
             {
             
                 case 0:// Starting level
+                    //var enumVal =
+                    foreach(Enum enemyType in Enum.GetValues(typeof(easyLevel)))
+                    {
+                        var grabtype = enemyType.GetType().ToString();
+                        Debug.WriteLine(enemyType);
+                        Debug.WriteLine(grabtype);
+                        
+                        for (int i = 0; i < 4; i++)
+                        {
+
+                        }
+                    }
                     break;
                 case 1:// Level Increase 1
                     clearEnemiesLists();
@@ -106,6 +127,17 @@ namespace WhackAMole.ObjectPools
 
         }
 
+        private void validateEnemyType(Enum enemyType)
+        {
+
+            switch (enemyType)
+            {
+
+
+
+            }
+
+        }
 
 
     }
