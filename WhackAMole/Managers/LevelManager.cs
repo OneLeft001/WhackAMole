@@ -126,7 +126,7 @@ namespace WhackAMole
             // When a threshold is met, EnemyPool must hold more threatening enemies
             // This implies that the pool will need to be cleared & new instances of enemies created
             increaseDifficulty();
-
+            _enemyPool.update(gameTime);
 
 
         }
