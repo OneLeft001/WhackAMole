@@ -26,25 +26,14 @@ namespace WhackAMole.ObjectPools
         private int numberOfEnemies = 7;
         public int DifficultyLevel { get; set; }
 
-        enum easyLevel
+        enum levelDifficultyIndex
         {
-            moleEnemies = 5,  
+            easyLevel = 0,
+            mediumLevel = 1,
+            hardLevel = 2,
             
         }
-        enum mediumLevel
-        {
-            moleEnemies = 5,
-            bombEnemies = 6,
-
-
-        }
-        enum hardLevel
-        {
-            moleEnemies = 5,
-            bombEnemies = 6,
-            rangerMoleEnemies = 7
-        }
-        
+       
 
         private void initilize() 
         {
@@ -54,7 +43,7 @@ namespace WhackAMole.ObjectPools
             inactiveEnemies = new List<Enemy>();
             activeEnemies = new List<Enemy>();
 
-            for (int i = 0; i < numberOfEnemies; i++) 
+            /*for (int i = 0; i < numberOfEnemies; i++) 
             {
                 inactiveEnemies.Add(new Mole(_moleTexture));
                 //inactiveEnemies.Add(new Bomb(_bombTexture));
@@ -62,7 +51,7 @@ namespace WhackAMole.ObjectPools
                 //inactiveEnemies.Add(new Enemy(_bombTexture));
                 //inactiveEnemies.Add(new Enemy(_rangerMoleTexture));
 
-            }
+            }*/
 
             initilizeEnemies();
 
@@ -87,32 +76,21 @@ namespace WhackAMole.ObjectPools
 
         private void initilizeEnemies()
         {
-            LevelDifficultyData.easyLevelData
-            Debug.WriteLine("This is the easy type: " + testEasy);
+            //LevelDifficultyData.easyLevelData
+            //Debug.WriteLine("This is the easy type: " + testEasy);
             switch (DifficultyLevel) 
             {
             
-                case 0:// Starting level
-                    //var enumVal =
-                    foreach(string enemyType in Enum.GetNames(typeof(easyLevel)))
-                    {
-                        //var grabtype = enemyType.GetType().ToString();
-                        //Debug.WriteLine(enemyType);
-                        //Debug.WriteLine(grabtype);
-                        
-                        
-                        for (int i = 0; i < 5; i++)
-                        {
+                case (int)levelDifficultyIndex.easyLevel:// Starting level
 
-                            validateEnemyType(enemyType);
+                    cycleEnemyInstanciation();
 
-                        }
-                    }
                     break;
-                case 1:// Level Increase 1
+                case (int)levelDifficultyIndex.mediumLevel:// Level Increase 1
                     clearEnemiesLists();
+                    cycleEnemyInstanciation();
                     break;
-                case 2:// Level Increase 2
+                case (int)levelDifficultyIndex.hardLevel:// Level Increase 2
                     break;
 
                 default:
@@ -130,26 +108,39 @@ namespace WhackAMole.ObjectPools
 
         }
 
-        private void validateEnemyType(string enemyType)
+        private void cycleEnemyInstanciation()
+        {
+
+            foreach (var (enemyType, numberOfEnemies) in LevelDifficultyData.easyLevelData)
+            {
+
+                for (int i = 0; i < numberOfEnemies; i++)
+                {
+
+                    instantiateEnemyType(enemyType);
+
+                }
+
+            }
+
+        }
+
+        private void instantiateEnemyType(string enemyType)
         {
 
             switch (enemyType)
             {
-                /*
-                case easyLevel.moleEnemies.ToString():
-                case mediumLevel.moleEnemies:
-                case hardLevel.moleEnemies:
-                    break;
 
-                case mediumLevel.bombEnemies:
-                case hardLevel.bombEnemies:
+                case "Mole":
+                    inactiveEnemies.Add(new Mole(_moleTexture));
                     break;
-
-                case hardLevel.rangerMoleEnemies:
+                case "Bomb":
+                    inactiveEnemies.Add(new Bomb(_bombTexture));
                     break;
-
+                //case "RangerMole":
+                //inactiveEnemies.Add(new Ran)
                 default:
-                    break;*/
+                    break;
 
             }
 
