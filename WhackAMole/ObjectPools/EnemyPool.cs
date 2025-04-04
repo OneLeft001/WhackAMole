@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WhackAMole.Objects;
 
 namespace WhackAMole.ObjectPools
 {
@@ -27,9 +28,7 @@ namespace WhackAMole.ObjectPools
 
         enum easyLevel
         {
-            moleEnemies = 5,
-            
-            
+            moleEnemies = 5,  
             
         }
         enum mediumLevel
@@ -88,7 +87,8 @@ namespace WhackAMole.ObjectPools
 
         private void initilizeEnemies()
         {
-
+            LevelDifficultyData.easyLevelData
+            Debug.WriteLine("This is the easy type: " + testEasy);
             switch (DifficultyLevel) 
             {
             
@@ -135,7 +135,7 @@ namespace WhackAMole.ObjectPools
 
             switch (enemyType)
             {
-
+                /*
                 case easyLevel.moleEnemies.ToString():
                 case mediumLevel.moleEnemies:
                 case hardLevel.moleEnemies:
@@ -149,7 +149,7 @@ namespace WhackAMole.ObjectPools
                     break;
 
                 default:
-                    break;
+                    break;*/
 
             }
 
