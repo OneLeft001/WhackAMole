@@ -54,6 +54,20 @@ namespace WhackAMole
 
     }
 
+    class RangerMole : Enemy
+    {
+
+        public RangerMole(Texture2D texture) : base(texture) { }
+
+        public override void updateAbstractClass(GameTime gameTime)
+        {
+
+            base.updateAbstractClass(gameTime);
+
+        }
+
+    }
+
 
 
 }

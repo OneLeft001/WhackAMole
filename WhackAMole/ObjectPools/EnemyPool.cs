@@ -25,6 +25,7 @@ namespace WhackAMole.ObjectPools
 
         private int numberOfEnemies = 7;
         public int DifficultyLevel { get; set; }
+        private int _previousDifficulty = -1;
 
         enum levelDifficultyIndex
         {
@@ -65,6 +66,7 @@ namespace WhackAMole.ObjectPools
             _rangerMoleTexture = content.Load<Texture2D>("RangerMole");
 
             DifficultyLevel = 0;
+            //_previousDifficulty = 0;
             initilize();
 
         }
@@ -87,24 +89,64 @@ namespace WhackAMole.ObjectPools
         {
             //LevelDifficultyData.easyLevelData
             //Debug.WriteLine("This is the easy type: " + testEasy);
-            switch (DifficultyLevel) 
+
+            if (DifficultyLevel != _previousDifficulty)
             {
-            
-                case (int)levelDifficultyIndex.easyLevel:// Starting level
 
-                    cycleEnemyInstanciation();
+                _previousDifficulty = DifficultyLevel;
 
-                    break;
-                case (int)levelDifficultyIndex.mediumLevel:// Level Increase 1
-                    clearEnemiesLists();
-                    cycleEnemyInstanciation();
-                    break;
-                case (int)levelDifficultyIndex.hardLevel:// Level Increase 2
-                    break;
+                switch (DifficultyLevel)
+                {
 
-                default:
-                    break;
+                    case (int)levelDifficultyIndex.easyLevel:// Starting level
 
+                        //cycleEnemyInstanciation((int)levelDifficultyIndex.easyLevel);
+                        foreach (var (enemyType, numberOfEnemies) in LevelDifficultyData.easyLevelData)
+                        {
+
+                            for (int i = 0; i < numberOfEnemies; i++)
+                            {
+
+                                instantiateEnemyType(enemyType);
+
+                            }
+
+                        }
+
+                        break;
+                    case (int)levelDifficultyIndex.mediumLevel:// Level Increase 1
+                        clearEnemiesLists();
+                        //cycleEnemyInstanciation();
+                        foreach (var (enemyType, numberOfEnemies) in LevelDifficultyData.mediumLevelData)
+                        {
+
+                            for (int i = 0; i < numberOfEnemies; i++)
+                            {
+
+                                instantiateEnemyType(enemyType);
+
+                            }
+
+                        }
+                        break;
+                    case (int)levelDifficultyIndex.hardLevel:// Level Increase 2
+                        foreach (var (enemyType, numberOfEnemies) in LevelDifficultyData.hardLevelData)
+                        {
+
+                            for (int i = 0; i < numberOfEnemies; i++)
+                            {
+
+                                instantiateEnemyType(enemyType);
+
+                            }
+
+                        }
+                        break;
+
+                    default:
+                        break;
+
+                }
             }
 
         }
@@ -117,9 +159,12 @@ namespace WhackAMole.ObjectPools
 
         }
 
-        private void cycleEnemyInstanciation()
+        /*private void cycleEnemyInstanciation(int levelDifficultyIndex)
         {
 
+            switch (levelDifficultyIndex) {
+
+                case
             foreach (var (enemyType, numberOfEnemies) in LevelDifficultyData.easyLevelData)
             {
 
@@ -134,6 +179,8 @@ namespace WhackAMole.ObjectPools
 
         }
 
+        }*/
+
         private void instantiateEnemyType(string enemyType)
         {
 
@@ -146,8 +193,9 @@ namespace WhackAMole.ObjectPools
                 case "Bomb":
                     inactiveEnemies.Add(new Bomb(_bombTexture));
                     break;
-                //case "RangerMole":
-                //inactiveEnemies.Add(new Ran)
+                case "RangerMole":
+                    inactiveEnemies.Add(new RangerMole(_rangerMoleTexture));
+                    break;
                 default:
                     break;
 
