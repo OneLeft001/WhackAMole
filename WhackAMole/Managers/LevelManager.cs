@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using WhackAMole.ObjectPools;
+using WhackAMole.Objects;
 namespace WhackAMole
 {
     class LevelManager
@@ -27,6 +28,7 @@ namespace WhackAMole
         
         private EnemyPool _enemyPool;
         private HolePool _holePool;
+        private PlayerHealth _playerHealth;
 
         private Texture2D _spawnArea;
         private static float screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
@@ -45,6 +47,8 @@ namespace WhackAMole
 
         public void initilize(GraphicsDevice graphics)
         {
+
+            _playerHealth = new PlayerHealth();
 
             //holes = new List<Hole>();
             _spawnArea = new Texture2D(graphics, 1, 1);
@@ -66,6 +70,8 @@ namespace WhackAMole
         {
 
             _font = content.Load<SpriteFont>("Fonts/gameFont");
+
+            _playerHealth.loadContent(content);
 
             foreach (Hole hole in _holePool.getHolesNotPlaced()) 
             {
@@ -156,6 +162,8 @@ namespace WhackAMole
                     enemy.draw(spriteBatch);
                 }
             }
+
+            _playerHealth.draw(spriteBatch);
 
             spriteBatch.DrawString(_font, "Score: " + _playerScore, new Vector2(screenWidth / 2, 70), Color.GhostWhite);
 
