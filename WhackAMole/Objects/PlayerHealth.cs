@@ -23,6 +23,8 @@ namespace WhackAMole.Objects
         private static float screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         private static float screenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
+        private int _healthCount = 2;
+
         public PlayerHealth() { }
 
         public void loadContent(ContentManager content)
@@ -58,10 +60,7 @@ namespace WhackAMole.Objects
 
             if (_hammerTextures != null)
             {
-                /*spriteBatch.Draw(_hammerTextures[0], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 400, _hammerTextures[0].Width / 2, _hammerTextures[0].Height / 2), Color.White);
-                spriteBatch.Draw(_hammerTextures[1], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 200, _hammerTextures[1].Width / 2, _hammerTextures[1].Height / 2), Color.White);
-                spriteBatch.Draw(_hammerTextures[2], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2), _hammerTextures[2].Width / 2, _hammerTextures[2].Height / 2), Color.White);
-                */
+                
                 for (int i = 0; i < _hammerTextures.Length; i++) 
                 {
 
@@ -76,7 +75,11 @@ namespace WhackAMole.Objects
         public void looseHealth()
         {
 
-            _hammerTextures[2] = null;
+            if (_healthCount >= 0)
+            {
+                _hammerBounds[_healthCount] = new Rectangle(1000, 1000, 1, 1);
+                _healthCount--;
+            }
 
         }
 
