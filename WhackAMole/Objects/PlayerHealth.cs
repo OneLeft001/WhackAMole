@@ -19,6 +19,9 @@ namespace WhackAMole.Objects
 
         private Texture2D[] _hammerTextures;
 
+        private static float screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        private static float screenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
         public PlayerHealth() { }
 
         public void loadContent(ContentManager content)
@@ -32,7 +35,6 @@ namespace WhackAMole.Objects
 
             }
 
-            //_hammerTextureOne = content.Load<Texture2D>("Hammer");
 
         }
 
@@ -48,9 +50,9 @@ namespace WhackAMole.Objects
 
             if (_hammerTextures != null)
             {
-                spriteBatch.Draw(_hammerTextures[0], new Vector2(10, 10), Color.White);
-                spriteBatch.Draw(_hammerTextures[1], new Vector2(30, 10), Color.White);
-                spriteBatch.Draw(_hammerTextures[2], new Vector2(40, 10), Color.White);
+                spriteBatch.Draw(_hammerTextures[0], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 400, _hammerTextures[0].Width / 2, _hammerTextures[0].Height / 2), Color.White);
+                spriteBatch.Draw(_hammerTextures[1], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 200, _hammerTextures[1].Width / 2, _hammerTextures[1].Height / 2), Color.White);
+                spriteBatch.Draw(_hammerTextures[2], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2), _hammerTextures[2].Width / 2, _hammerTextures[2].Height / 2), Color.White);
             }
 
         }
