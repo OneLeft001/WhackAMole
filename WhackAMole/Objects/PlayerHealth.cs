@@ -18,6 +18,7 @@ namespace WhackAMole.Objects
         private Texture2D _hammerTextureThree;
 
         private Texture2D[] _hammerTextures;
+        private Rectangle[] _hammerBounds;
 
         private static float screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         private static float screenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
@@ -28,6 +29,9 @@ namespace WhackAMole.Objects
         {
 
             _hammerTextures = new Texture2D[3];
+            _hammerBounds = new Rectangle[3];
+
+            
 
             for (int i = 0; i < _hammerTextures.Length; i++) {
 
@@ -35,6 +39,10 @@ namespace WhackAMole.Objects
 
             }
 
+            _hammerBounds[0] = new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 400, _hammerTextures[0].Width / 2, _hammerTextures[0].Height / 2);
+            _hammerBounds[1] = new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 200, _hammerTextures[1].Width / 2, _hammerTextures[1].Height / 2);
+            _hammerBounds[2] = new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2), _hammerTextures[2].Width / 2, _hammerTextures[2].Height / 2);
+            
 
         }
 
@@ -50,12 +58,28 @@ namespace WhackAMole.Objects
 
             if (_hammerTextures != null)
             {
-                spriteBatch.Draw(_hammerTextures[0], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 400, _hammerTextures[0].Width / 2, _hammerTextures[0].Height / 2), Color.White);
+                /*spriteBatch.Draw(_hammerTextures[0], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 400, _hammerTextures[0].Width / 2, _hammerTextures[0].Height / 2), Color.White);
                 spriteBatch.Draw(_hammerTextures[1], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2) - 200, _hammerTextures[1].Width / 2, _hammerTextures[1].Height / 2), Color.White);
                 spriteBatch.Draw(_hammerTextures[2], new Rectangle((int)screenWidth - ((int)screenWidth / 5), ((int)screenHeight / 2), _hammerTextures[2].Width / 2, _hammerTextures[2].Height / 2), Color.White);
+                */
+                for (int i = 0; i < _hammerTextures.Length; i++) 
+                {
+
+                    spriteBatch.Draw(_hammerTextures[i], _hammerBounds[i], Color.White);
+
+                }
+
             }
 
         }
+
+        public void looseHealth()
+        {
+
+            _hammerTextures[2] = null;
+
+        }
+
 
     }
 
