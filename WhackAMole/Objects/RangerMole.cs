@@ -10,12 +10,18 @@ namespace WhackAMole
 
         public RangerMole(Texture2D texture) : base(texture) { }
 
-        public override void updateAbstractClass(GameTime gameTime)
+        public override void update(GameTime gameTime)
         {
 
-            base.updateAbstractClass(gameTime);
+            // Needs to shoot given a random time.
+            // But also needs to be a time before this mole despawns
+            // So random time of shooting in between time of spawning in - to time of despawning
 
+
+            base.update(gameTime);
         }
+
+        
 
     }
 

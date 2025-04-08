@@ -29,6 +29,7 @@ namespace WhackAMole
         
         private EnemyPool _enemyPool;
         private HolePool _holePool;
+        private BulletPool _bulletPool;
         private PlayerHealth _playerHealth;
 
         private Texture2D _spawnArea;
@@ -61,6 +62,8 @@ namespace WhackAMole
             _enemyPool = new EnemyPool();
             _enemyPool.DifficultyLevel = 0;
 
+            _bulletPool = new BulletPool();
+
             //holes.Add(new Hole());
 
 
@@ -73,6 +76,7 @@ namespace WhackAMole
             _font = content.Load<SpriteFont>("Fonts/gameFont");
 
             _playerHealth.loadContent(content);
+            _bulletPool.loadContent(content);
 
             foreach (Hole hole in _holePool.getHolesNotPlaced()) 
             {

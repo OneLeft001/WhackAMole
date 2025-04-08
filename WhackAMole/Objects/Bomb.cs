@@ -18,11 +18,11 @@ namespace WhackAMole
         {
 
             _sprite = texture;
-            //_sprite = EnemyPool.ExplosionTexture; -> worked here before?
+            
 
         }
 
-        public override void updateAbstractClass(GameTime gameTime)
+        public override void update(GameTime gameTime)
         {
 
             if (IsClicked)
@@ -30,8 +30,9 @@ namespace WhackAMole
                 this._sprite = EnemyPool.ExplosionTexture;
             }
 
-            base.updateAbstractClass(gameTime);
+            base.update(gameTime);
         }
+       
 
         public override void draw(SpriteBatch spriteBatch)
         {

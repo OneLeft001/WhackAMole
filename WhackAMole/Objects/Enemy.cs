@@ -32,10 +32,10 @@ namespace WhackAMole
 
         }
 
-        public void update(GameTime gameTime) 
+        public virtual void update(GameTime gameTime) 
         {
 
-            updateAbstractClass(gameTime);
+            //updateAbstractClass(gameTime);
 
         }
 
@@ -59,7 +59,7 @@ namespace WhackAMole
 
         }
 
-        public virtual void updateAbstractClass(GameTime gameTime) { }
+        //public virtual void updateAbstractClass(GameTime gameTime) { }
        
 
 
