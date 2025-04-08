@@ -18,7 +18,7 @@ namespace WhackAMole
         private MouseState mouseState;
         //private bool mouseReleased = true;
 
-        private Texture2D _sprite;
+        protected virtual Texture2D _sprite {  get; set; }
         private Vector2 _position;
         public Rectangle _rectangle { get { return new Rectangle((int)_position.X, (int)_position.Y, _sprite.Width / 2, _sprite.Height / 2); } }
 
@@ -39,7 +39,7 @@ namespace WhackAMole
 
         }
 
-        public void draw(SpriteBatch spriteBatch) 
+        public virtual void draw(SpriteBatch spriteBatch) 
         {
         
             if(_sprite != null)

@@ -18,6 +18,7 @@ namespace WhackAMole.ObjectPools
         private Texture2D _moleTexture;
         private Texture2D _bombTexture;
         private Texture2D _rangerMoleTexture;
+        public static Texture2D ExplosionTexture;
         
 
         private List<Enemy> inactiveEnemies;
@@ -60,6 +61,8 @@ namespace WhackAMole.ObjectPools
 
         public void loadContent(ContentManager content)
         {
+
+            ExplosionTexture = content.Load<Texture2D>("Explosion");
 
             _moleTexture = content.Load<Texture2D>("Mole");
             _bombTexture = content.Load<Texture2D>("Enemy");

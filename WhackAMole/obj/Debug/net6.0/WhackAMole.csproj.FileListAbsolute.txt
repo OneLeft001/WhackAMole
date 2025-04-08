@@ -30,3 +30,5 @@ C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\WhackAMole.genrun
 C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\ref\WhackAMole.dll
 C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\bin\Debug\net6.0\Content\Fonts\gameFont.xnb
 C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\obj\Debug\net6.0\WhackAMole.sourcelink.json
+C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\bin\Debug\net6.0\Content\Explosion.xnb
+C:\Dev\MonoGameProjects\WhackAMole\WhackAMole\bin\Debug\net6.0\Content\Pellet.xnb
