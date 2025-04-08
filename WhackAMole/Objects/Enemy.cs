@@ -22,6 +22,8 @@ namespace WhackAMole
         private Vector2 _position;
         public Rectangle _rectangle { get { return new Rectangle((int)_position.X, (int)_position.Y, _sprite.Width / 2, _sprite.Height / 2); } }
 
+        public virtual bool IsHarmfull { get { return false; } }
+
 
         public Enemy(Texture2D texture) {
             

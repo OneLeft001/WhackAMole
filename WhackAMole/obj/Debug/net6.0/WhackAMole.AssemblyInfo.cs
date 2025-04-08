@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WhackAMole")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5da73495d2fbba33c5a3b7613c4d84977632500c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a05832f16ff9246101ae8d8e33cdc0931050d38")]
 [assembly: System.Reflection.AssemblyProductAttribute("WhackAMole")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WhackAMole")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

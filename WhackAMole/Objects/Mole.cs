@@ -15,6 +15,7 @@ namespace WhackAMole
     {
 
         //private Texture2D _sprite;
+        public override bool IsHarmfull {  get { return false; } }
 
         public Mole(Texture2D texture) : base(texture)
         {
@@ -30,6 +31,7 @@ namespace WhackAMole
     {
 
         //private Texture2D _sprite;
+        public override bool IsHarmfull { get { return true; } }
 
         public Bomb(Texture2D texture) : base(texture)
         {
@@ -56,6 +58,8 @@ namespace WhackAMole
 
     class RangerMole : Enemy
     {
+
+        public override bool IsHarmfull { get { return false; } }
 
         public RangerMole(Texture2D texture) : base(texture) { }
 

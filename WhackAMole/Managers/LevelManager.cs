@@ -380,11 +380,22 @@ namespace WhackAMole
 
                         _mouseReleased = false;
 
-                        _playerScore += 1;
+                        
 
 
                         // If enemy can damage player, takeaway player's health -1
-                        _playerHealth.looseHealth();
+                        if (enemy.IsHarmfull)
+                        {
+
+                            _playerHealth.looseHealth();
+
+                        }
+                        else
+                        {
+
+                            _playerScore += 1;
+
+                        }
 
 
                     }
