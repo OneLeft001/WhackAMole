@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Timers;
@@ -384,9 +385,18 @@ namespace WhackAMole
 
 
                         // If enemy can damage player, takeaway player's health -1
+                        // Invoke specific enemy class death behaviuour
                         if (enemy.IsHarmfull)
                         {
+                            try {
+                                
+                                Bomb bomb = (Bomb)enemy;
+                                bomb.IsClicked = true;
 
+                            }catch { }
+
+
+                            
                             _playerHealth.looseHealth();
 
                         }
