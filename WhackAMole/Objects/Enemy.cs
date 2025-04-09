@@ -32,9 +32,7 @@ namespace WhackAMole
 
         }
 
-        int counterT = 100;
-        int setTime = 0;
-
+        private float _timer = 0f;
         public virtual void update(GameTime gameTime) 
         {
 
@@ -44,16 +42,19 @@ namespace WhackAMole
             // And then reset timer, and become inactive for the next time.
             //gameTime.ElapsedGameTime.CompareTo(gameTime.ElapsedGameTime);
 
-            
+            if (_timer >= 5) // Despawn after time is met
+            {
 
-            if (counterT <= 0) {
-
-                Debug.WriteLine("MOle despawned");
+                //_timer = gameTime.TotalGameTime.TotalMilliseconds + _delayTimer;
+                Debug.WriteLine("Bwaaaaazzzz");
 
             }
-            counterT--;
 
-            Debug.WriteLine("DespawnCounter: " + counterT + ", Total Seconds Passed: " + gameTime.TotalGameTime.TotalSeconds);
+            _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            Debug.WriteLine("Timer: " +  _timer + "\nGameTime: " + (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+
 
         }
 

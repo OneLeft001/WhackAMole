@@ -398,12 +398,15 @@ namespace WhackAMole
                         // Invoke specific enemy class death behaviuour
                         if (enemy.IsHarmfull)
                         {
-                            try {
-                                
+
+                            if(enemy is Bomb)
+                            {
+
                                 Bomb bomb = (Bomb)enemy;
                                 bomb.IsClicked = true;
 
-                            }catch { }
+                            }
+                            
 
 
                             
