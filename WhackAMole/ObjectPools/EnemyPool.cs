@@ -74,12 +74,14 @@ namespace WhackAMole.ObjectPools
 
         }
 
+        
         public void update(GameTime gameTime)
         {
 
-            initilizeEnemies(); // Left off here, problem, the enemies all get deleted but not created again?
-            // I suspect the issue is that initilize is constantly being called, so the enemeis area always being deleted.
-            // Potental solution is to have a flag to switch levels on/off
+            
+            initilizeEnemies();
+                
+            
 
         }
 

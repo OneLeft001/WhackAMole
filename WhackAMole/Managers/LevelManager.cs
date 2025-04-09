@@ -93,7 +93,7 @@ namespace WhackAMole
             
 
         }
-       
+
 
         
         public void update(GameTime gameTime)
@@ -126,6 +126,7 @@ namespace WhackAMole
             if (_enemyPool.getActiveEnemies().Count < 6)
             {
                 placeEnemy();
+                
             }
 
             // Enemy Cursor Collsion
@@ -314,7 +315,12 @@ namespace WhackAMole
 
         }
 
-        private void placeEnemy()
+
+        // NOTE - THIS NEEDS TO BE REFACTORED TO FIX
+        // - enemy placement
+        // - checking what holes and what enemies are active/inactive
+        // - does not determine enemy behaviour or life cycle
+        private void placeEnemy() 
         {
 
             

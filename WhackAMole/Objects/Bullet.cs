@@ -23,6 +23,10 @@ namespace WhackAMole.Objects
         public void update(GameTime gameTime)
         {
 
+            // Needs to damage player when collided with the cursor.
+            // And goes back to being inactive in BulletPool.
+            // Also become inactive if it goes off screen.
+
         }
 
         public void draw(SpriteBatch spriteBatch) 
