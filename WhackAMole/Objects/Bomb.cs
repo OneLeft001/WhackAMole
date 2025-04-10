@@ -30,6 +30,7 @@ namespace WhackAMole
                 this._sprite = EnemyPool.ExplosionTexture;
             }
 
+            
             base.update(gameTime);
         }
        

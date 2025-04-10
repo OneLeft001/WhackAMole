@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using WhackAMole.Managers;
@@ -32,7 +33,13 @@ namespace WhackAMole
 
         }
 
-        private float _timer = 0f;
+        
+        GameTime _gameTimeRef;
+        int counter = 0;
+        float _waitTime = 3f; // wait X seconds
+        float _timer = 0f;
+        
+        
         public virtual void update(GameTime gameTime) 
         {
 
@@ -41,7 +48,9 @@ namespace WhackAMole
             // When spawned, need countdown timer
             // And then reset timer, and become inactive for the next time.
             //gameTime.ElapsedGameTime.CompareTo(gameTime.ElapsedGameTime);
+            //_timer = new GameTime();
 
+            /*
             if (_timer >= 5) // Despawn after time is met
             {
 
@@ -53,14 +62,45 @@ namespace WhackAMole
             _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             Debug.WriteLine("Timer: " +  _timer + "\nGameTime: " + (float)gameTime.ElapsedGameTime.TotalSeconds);
+            */
 
+            /*
+            if (counter == 0) {
 
+                _timer = new GameTime();
+                counter = 1;
+
+            }
+
+            Debug.WriteLine("GameTime: " + (float)gameTime.ElapsedGameTime.TotalSeconds + ", TimerTime: " + (float)_timer.ElapsedGameTime.TotalSeconds);
+            */
+
+            if (counter == 0) { // note this needs to be method for when enemy becomes active
+
+                _timer = (float)gameTime.TotalGameTime.TotalSeconds + _waitTime;
+                counter = 2;
+                
+            }
+
+            Debug.WriteLine("GameTime: " + (float)gameTime.TotalGameTime.TotalSeconds + ", GameCounter: " + _timer);
+
+            if (gameTime.TotalGameTime.TotalSeconds >= _timer) 
+            {
+
+                Debug.WriteLine("Buzzz");
+
+            }
+            
+            _gameTimeRef = gameTime;
+            
 
         }
 
         public virtual void draw(SpriteBatch spriteBatch) 
         {
         
+            
+
             if(_sprite != null)
             {
 
@@ -68,6 +108,12 @@ namespace WhackAMole
                 
 
             }
+
+            if(_gameTimeRef != null && _gameTimeRef.TotalGameTime.TotalSeconds >= _timer && _timer > 0)
+            {
+                spriteBatch.Draw(_sprite, _rectangle, Color.Black);
+            }
+
 
         }
 
