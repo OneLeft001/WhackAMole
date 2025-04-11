@@ -36,7 +36,7 @@ namespace WhackAMole
         
         GameTime _gameTimeRef;
         int counter = 0;
-        float _waitTime = 3f; // wait X seconds, but needs to be random (X, X); seconds
+        //float _waitTime = 3f; // wait X seconds, but needs to be random (X, X); seconds
         float _timer = 0f;
         public bool _isInUse { get; set; }
         
@@ -72,7 +72,7 @@ namespace WhackAMole
         
             
 
-            if(_sprite != null && _isInUse)
+            if(_sprite != null )
             {
 
                 spriteBatch.Draw(_sprite, _rectangle, Color.White);
@@ -101,8 +101,11 @@ namespace WhackAMole
         public void SetTimer(GameTime gameTime)
         {
 
+            var rand = new Random();
 
-            _timer = (float)gameTime.TotalGameTime.TotalSeconds + _waitTime;
+            int waitTime = rand.Next(1, 3);
+
+            _timer = (float)gameTime.TotalGameTime.TotalSeconds + (float)waitTime;
 
         }
         public float GetTimer() {  return _timer; }

@@ -95,7 +95,8 @@ namespace WhackAMole
         }
 
 
-        
+        float _waitTime = 3f; // wait X seconds, but needs to be random (X, X); seconds
+        float _timer = 0f;
         public void update(GameTime gameTime)
         {
 
@@ -122,12 +123,22 @@ namespace WhackAMole
             }
 
 
-            // Limmit amount of enemies on screen
-            if (_enemyPool.getActiveEnemies().Count < 6)
+            // Limmit amount of enemies on screen.
+            // This also needs to be nested withing a timer similar to the enemy/hole timers.
+
+            if (gameTime.TotalGameTime.TotalSeconds >= _timer)// timer is up
             {
-                placeEnemy();
-                
+
+                if (_enemyPool.getActiveEnemies().Count < 6)
+                {
+                    placeEnemy();
+
+                }
+
+                _timer = (float)gameTime.TotalGameTime.TotalSeconds + _waitTime;
+
             }
+            
 
             // Enemy Cursor Collsion
             ClickEnemy();
