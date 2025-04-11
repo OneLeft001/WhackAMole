@@ -36,48 +36,18 @@ namespace WhackAMole
         
         GameTime _gameTimeRef;
         int counter = 0;
-        float _waitTime = 3f; // wait X seconds
+        float _waitTime = 3f; // wait X seconds, but needs to be random (X, X); seconds
         float _timer = 0f;
+        public bool _isInUse { get; set; }
         
         
         public virtual void update(GameTime gameTime) 
         {
 
 
-            //updateAbstractClass(gameTime);
-            // When spawned, need countdown timer
-            // And then reset timer, and become inactive for the next time.
-            //gameTime.ElapsedGameTime.CompareTo(gameTime.ElapsedGameTime);
-            //_timer = new GameTime();
-
-            /*
-            if (_timer >= 5) // Despawn after time is met
-            {
-
-                //_timer = gameTime.TotalGameTime.TotalMilliseconds + _delayTimer;
-                Debug.WriteLine("Bwaaaaazzzz");
-
-            }
-
-            _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            Debug.WriteLine("Timer: " +  _timer + "\nGameTime: " + (float)gameTime.ElapsedGameTime.TotalSeconds);
-            */
-
-            /*
-            if (counter == 0) {
-
-                _timer = new GameTime();
-                counter = 1;
-
-            }
-
-            Debug.WriteLine("GameTime: " + (float)gameTime.ElapsedGameTime.TotalSeconds + ", TimerTime: " + (float)_timer.ElapsedGameTime.TotalSeconds);
-            */
-
             if (counter == 0) { // note this needs to be method for when enemy becomes active
 
-                _timer = (float)gameTime.TotalGameTime.TotalSeconds + _waitTime;
+                //_timer = (float)gameTime.TotalGameTime.TotalSeconds + _waitTime;
                 counter = 2;
                 
             }
@@ -88,6 +58,7 @@ namespace WhackAMole
             {
 
                 Debug.WriteLine("Buzzz");
+                _isInUse = false;
 
             }
             
@@ -101,7 +72,7 @@ namespace WhackAMole
         
             
 
-            if(_sprite != null)
+            if(_sprite != null && _isInUse)
             {
 
                 spriteBatch.Draw(_sprite, _rectangle, Color.White);
@@ -109,6 +80,9 @@ namespace WhackAMole
 
             }
 
+            // Note - if enemy sprite behavior needs to change
+            // based on enemies eternal timer then this
+            // should be its own method!
             if(_gameTimeRef != null && _gameTimeRef.TotalGameTime.TotalSeconds >= _timer && _timer > 0)
             {
                 spriteBatch.Draw(_sprite, _rectangle, Color.Black);
@@ -124,7 +98,14 @@ namespace WhackAMole
 
         }
 
-        //public virtual void updateAbstractClass(GameTime gameTime) { }
+        public void SetTimer(GameTime gameTime)
+        {
+
+
+            _timer = (float)gameTime.TotalGameTime.TotalSeconds + _waitTime;
+
+        }
+        public float GetTimer() {  return _timer; }
        
 
 

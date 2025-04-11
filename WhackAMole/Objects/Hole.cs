@@ -32,6 +32,8 @@ namespace WhackAMole
         private int largeCountTime = 400;
         private int counter = countTime;
 
+        private int _justMadeActiveCounter = 0;
+
 
         public Rectangle _rectangle // NOTE; maybe intersection is not working bc getting the rectangle is always making a new rect
         {
@@ -55,6 +57,7 @@ namespace WhackAMole
         public void update(GameTime gameTime)
         {
 
+            /*
             if (_isInUse)
             {
 
@@ -74,6 +77,33 @@ namespace WhackAMole
                 counter = rand.Next(countTime, largeCountTime);
                 _isInUse = false;
                 
+            }*/
+
+            if (_isInUse && _justMadeActiveCounter <=0)
+            {
+                
+                _currentEnemyRef._isInUse = true;
+                _currentEnemyRef.SetTimer(gameTime);
+                _justMadeActiveCounter = 1;
+
+            }
+
+            if (_isInUse) { counter--; }
+
+            if (_isInUse && _currentEnemyRef.GetTimer() <= (float)gameTime.TotalGameTime.TotalSeconds) {
+
+                _enemyPoolRef.getActiveEnemies().Remove(_currentEnemyRef);
+                _enemyPoolRef.getInactiveEnemies().Add(_currentEnemyRef);
+                _currentEnemyRef._isInUse = false;
+
+                var rand = new Random();
+                counter = rand.Next(countTime, largeCountTime);
+
+                _isInUse = false;
+                _justMadeActiveCounter = 0;
+
+
+
             }
 
 
