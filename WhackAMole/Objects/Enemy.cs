@@ -98,14 +98,14 @@ namespace WhackAMole
 
         }
 
-        public void SetTimer(GameTime gameTime)
+        public void SetTimer(GameTime gameTime, float extraTime)
         {
 
             var rand = new Random();
 
             int waitTime = rand.Next(1, 3);
 
-            _timer = (float)gameTime.TotalGameTime.TotalSeconds + (float)waitTime;
+            _timer = (float)gameTime.TotalGameTime.TotalSeconds + (float)waitTime + (float)extraTime;
 
         }
         public float GetTimer() {  return _timer; }

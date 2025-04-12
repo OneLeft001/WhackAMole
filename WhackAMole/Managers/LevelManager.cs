@@ -44,8 +44,9 @@ namespace WhackAMole
         private int _playerScore  = 0;
 
         private bool holesPlaced = false;
+        private float _extraEnemySpawnTime = 0;
 
-       
+
 
         public void initilize(GraphicsDevice graphics)
         {
@@ -131,9 +132,20 @@ namespace WhackAMole
 
                 if (_enemyPool.getActiveEnemies().Count < 6)
                 {
-                    placeEnemy();
+                    // NOTE - THIS IS LIKELY THE ISSUE!!!
+                    // I believe this doesn't currently work. Because the hole/enemy associated with the hole
+                    // Gets placed, therefor the timer gets set. Before all the other holes/enemies get activated.
+                    // Therefor a while or do-While loops cannot work. Because the timers end before all enemies can
+                    // be placed at once.
+                    for (int i = 0; i < 6; i++)
+                    {
+                        placeEnemy();
+                    }
+                    _extraEnemySpawnTime = 0;
+                    
 
                 }
+                
 
                 _timer = (float)gameTime.TotalGameTime.TotalSeconds + _waitTime;
 
@@ -141,7 +153,7 @@ namespace WhackAMole
             
 
             // Enemy Cursor Collsion
-            ClickEnemy();
+            ClickEnemy(gameTime);
 
 
             // Check player score for difficulty increase
@@ -331,9 +343,12 @@ namespace WhackAMole
         // - enemy placement
         // - checking what holes and what enemies are active/inactive
         // - does not determine enemy behaviour or life cycle
+        
+        
         private void placeEnemy() 
         {
 
+            // Needs to be a loop until a maximum number of enemies has been spawned
             
             // pic one of each:
 
@@ -344,7 +359,7 @@ namespace WhackAMole
 
             // if true then get another hole, or maybe don't get anything this frame?
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
 
                 if (_holePool.getPlacedHoles()[randHole].getIsInUse())
@@ -373,9 +388,9 @@ namespace WhackAMole
                 _enemyPool.getInactiveEnemies().Remove(enemy);
                 _enemyPool.getActiveEnemies().Add(enemy);
 
-
+                _extraEnemySpawnTime += 0.2f;
                 // Pass values to set a is in use timer
-                hole.getUsedPoolsAndMole(_holePool, _enemyPool, enemy);
+                hole.getUsedPoolsAndMole(_holePool, _enemyPool, enemy, _extraEnemySpawnTime);
 
             }
 
@@ -383,7 +398,7 @@ namespace WhackAMole
         }
 
 
-        private void ClickEnemy()
+        private void ClickEnemy(GameTime gameTime)
         {
 
             if (_mouseReleased == true)
@@ -398,7 +413,7 @@ namespace WhackAMole
                     {
                         
 
-                        enemy.setPosition(new Vector2(1000, 1000));
+                        
 
                         _mouseReleased = false;
 
@@ -415,6 +430,7 @@ namespace WhackAMole
 
                                 Bomb bomb = (Bomb)enemy;
                                 bomb.IsClicked = true;
+                                bomb.SetTimer(gameTime, 0.3f);
 
                             }
                             
@@ -429,7 +445,9 @@ namespace WhackAMole
 
                             _playerScore += 1;
 
+
                         }
+                        enemy.setPosition(new Vector2(1000, 1000));
 
 
                     }

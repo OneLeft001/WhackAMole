@@ -33,6 +33,7 @@ namespace WhackAMole
         private int counter = countTime;
 
         private int _justMadeActiveCounter = 0;
+        private float _extraTime = 0;
 
 
         public Rectangle _rectangle // NOTE; maybe intersection is not working bc getting the rectangle is always making a new rect
@@ -83,7 +84,7 @@ namespace WhackAMole
             {
                 
                 _currentEnemyRef._isInUse = true;
-                _currentEnemyRef.SetTimer(gameTime);
+                _currentEnemyRef.SetTimer(gameTime, _extraTime);
                 _justMadeActiveCounter = 1;
 
             }
@@ -159,12 +160,13 @@ namespace WhackAMole
             _isInUse = isInUse;
         }
 
-        public void getUsedPoolsAndMole(HolePool holePool, EnemyPool enemyPool, Enemy enemy)
+        public void getUsedPoolsAndMole(HolePool holePool, EnemyPool enemyPool, Enemy enemy, float extraTime)
         {
 
             _holePoolRef = holePool;
             _enemyPoolRef = enemyPool;
             _currentEnemyRef = enemy;
+            _extraTime = extraTime;
 
         }
 
