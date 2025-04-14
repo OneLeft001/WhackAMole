@@ -37,7 +37,8 @@ namespace WhackAMole
 
         public override void draw(SpriteBatch spriteBatch)
         {
-
+            // NOTE - INSTEAD OF SWITCHING GRAPHIC TO EXPLOSION, WHEN CLICKED JUST GRAB THE GRAPHIC FROM
+            // ITS OWN GRAPHIC POOL AND SET THE POSITION AND SET ITS OWN TIMER!!!
             if (IsClicked)
             {
                 _sprite = EnemyPool.ExplosionTexture;
