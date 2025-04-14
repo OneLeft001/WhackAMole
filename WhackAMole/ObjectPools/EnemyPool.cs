@@ -24,6 +24,8 @@ namespace WhackAMole.ObjectPools
         private List<Enemy> inactiveEnemies;
         private List<Enemy> activeEnemies;
 
+        private BulletPool _bulletPool;
+
         private int numberOfEnemies = 7;
         public int DifficultyLevel { get; set; }
         private int _previousDifficulty = -1;
@@ -40,7 +42,7 @@ namespace WhackAMole.ObjectPools
         private void initilize() 
         {
 
-            
+            _bulletPool = new BulletPool();
 
             inactiveEnemies = new List<Enemy>();
             activeEnemies = new List<Enemy>();
@@ -61,6 +63,8 @@ namespace WhackAMole.ObjectPools
 
         public void loadContent(ContentManager content)
         {
+
+            _bulletPool.loadContent(content);
 
             ExplosionTexture = content.Load<Texture2D>("Explosion");
 
