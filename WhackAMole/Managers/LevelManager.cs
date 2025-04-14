@@ -50,6 +50,9 @@ namespace WhackAMole
         public void initilize(GraphicsDevice graphics)
         {
 
+            _enemyPool = new EnemyPool();
+            _enemyPool.DifficultyLevel = 0;
+
             _playerHealth = new PlayerHealth();
 
             //holes = new List<Hole>();
@@ -59,8 +62,7 @@ namespace WhackAMole
             _holePool = new HolePool();
             _holePool.initilize();
 
-            _enemyPool = new EnemyPool();
-            _enemyPool.DifficultyLevel = 0;
+            
 
             
 

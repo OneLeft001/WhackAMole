@@ -24,7 +24,7 @@ namespace WhackAMole.ObjectPools
         private List<Enemy> inactiveEnemies;
         private List<Enemy> activeEnemies;
 
-        private BulletPool _bulletPool;
+        private BulletPool _bulletPool; //= new BulletPool();
 
         private int numberOfEnemies = 7;
         public int DifficultyLevel { get; set; }
@@ -42,7 +42,9 @@ namespace WhackAMole.ObjectPools
         private void initilize() 
         {
 
+            //_bulletPool = new BulletPool();
             _bulletPool = new BulletPool();
+            _bulletPool.initilize();
 
             inactiveEnemies = new List<Enemy>();
             activeEnemies = new List<Enemy>();
@@ -57,13 +59,14 @@ namespace WhackAMole.ObjectPools
 
             }*/
 
-            initilizeEnemies();
+            //initilizeEnemies();
 
         }
 
         public void loadContent(ContentManager content)
         {
-
+            initilize();
+            //_bulletPool = new BulletPool();
             _bulletPool.loadContent(content);
 
             ExplosionTexture = content.Load<Texture2D>("Explosion");
@@ -203,7 +206,7 @@ namespace WhackAMole.ObjectPools
                     inactiveEnemies.Add(new Bomb(_bombTexture));
                     break;
                 case "RangerMole":
-                    inactiveEnemies.Add(new RangerMole(_rangerMoleTexture));
+                    inactiveEnemies.Add(new RangerMole(_rangerMoleTexture, _bulletPool));
                     break;
                 default:
                     break;

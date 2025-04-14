@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,15 @@ namespace WhackAMole.Objects
     {
 
         private Texture2D _bulletTexture;
+        private Rectangle _bulletRectangle;
+
+        private Vector2 _position;
 
         public Bullet(Texture2D texture) 
         {
 
             _bulletTexture = texture;
+            
 
         }
 
@@ -31,8 +36,15 @@ namespace WhackAMole.Objects
 
         public void draw(SpriteBatch spriteBatch) 
         {
-        
 
+            if (_bulletTexture != null) 
+            {
+                _bulletRectangle = new Rectangle((int)_position.X, (int)_position.Y, _bulletTexture.Width, _bulletTexture.Height);
+
+                spriteBatch.Draw(_bulletTexture, _bulletRectangle, Color.White);
+                Debug.WriteLine("Bullets are drawing");
+
+            }
 
         }
 

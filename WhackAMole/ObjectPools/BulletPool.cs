@@ -16,7 +16,10 @@ namespace WhackAMole
         public void initilize()
         {
 
+            _bulletsInUse = new List<Bullet>();
+            _bulletsNotInUse = new List<Bullet>();
 
+            
             for (int i = 0; i < _bulletCount; i++) 
             {
                 _bulletsNotInUse.Add(new Bullet(_bulletTexture));
