@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using WhackAMole.Objects;
 
 namespace WhackAMole
 {
@@ -17,6 +18,7 @@ namespace WhackAMole
         }
 
         int count = 0;
+        private Bullet _bulletInUse;
         public override void update(GameTime gameTime)
         {
 
@@ -28,7 +30,8 @@ namespace WhackAMole
             {
 
 
-                var bullet = _bulletPoolReference.getBulletsNotInUse()[0];
+                _bulletInUse = _bulletPoolReference.getBulletsNotInUse()[0];
+                
                 
 
             }
@@ -37,7 +40,17 @@ namespace WhackAMole
             base.update(gameTime);
         }
 
-        
+        public override void draw(SpriteBatch spriteBatch)
+        {
+
+            if(_bulletPoolReference != null && _bulletInUse != null)
+            {
+                spriteBatch.Draw(this._sprite, this._rectangle, Color.White);
+                _bulletInUse.draw(spriteBatch);
+            }
+
+            base.draw(spriteBatch);
+        }
 
     }
 

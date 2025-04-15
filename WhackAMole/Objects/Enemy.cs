@@ -52,12 +52,12 @@ namespace WhackAMole
                 
             }
 
-            Debug.WriteLine("GameTime: " + (float)gameTime.TotalGameTime.TotalSeconds + ", GameCounter: " + _timer);
+            //Debug.WriteLine("GameTime: " + (float)gameTime.TotalGameTime.TotalSeconds + ", GameCounter: " + _timer);
 
             if (gameTime.TotalGameTime.TotalSeconds >= _timer) 
             {
 
-                Debug.WriteLine("Buzzz");
+                //Debug.WriteLine("Buzzz");
                 _isInUse = false;
 
             }

@@ -15,7 +15,7 @@ namespace WhackAMole.Objects
         private Texture2D _bulletTexture;
         private Rectangle _bulletRectangle;
 
-        private Vector2 _position;
+        private Vector2 _position = new Vector2(40, 40);
 
         public Bullet(Texture2D texture) 
         {
