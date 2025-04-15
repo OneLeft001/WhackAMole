@@ -193,6 +193,18 @@ namespace WhackAMole
                 }
             }
 
+            if(_enemyPool.GetBulletPool() != null)
+            {
+
+                foreach(Bullet bullet in _enemyPool.GetBulletPool().getBulletsNotInUse())
+                {
+
+                    bullet.draw(spriteBatch);
+
+                }
+
+            }
+
             _playerHealth.draw(spriteBatch);
 
             spriteBatch.DrawString(_font, "Score: " + _playerScore, new Vector2(screenWidth / 2, 70), Color.GhostWhite);

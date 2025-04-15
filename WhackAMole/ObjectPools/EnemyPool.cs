@@ -215,6 +215,7 @@ namespace WhackAMole.ObjectPools
 
         }
 
+        public BulletPool GetBulletPool() {  return _bulletPool; }
 
     }
 

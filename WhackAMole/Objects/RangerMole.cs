@@ -31,7 +31,8 @@ namespace WhackAMole
 
 
                 _bulletInUse = _bulletPoolReference.getBulletsNotInUse()[0];
-                
+                _bulletInUse._position = new Vector3(this._rectangle.X, this._rectangle.Y, 2);
+                count = 1;
                 
 
             }
@@ -40,17 +41,20 @@ namespace WhackAMole
             base.update(gameTime);
         }
 
+        /*
         public override void draw(SpriteBatch spriteBatch)
         {
 
             if(_bulletPoolReference != null && _bulletInUse != null)
             {
-                spriteBatch.Draw(this._sprite, this._rectangle, Color.White);
+                
+                //_bulletInUse._position = new Vector3(this._rectangle.X, this._rectangle.Y, 2);//this._rectangle.Location.ToVector2();
                 _bulletInUse.draw(spriteBatch);
+                spriteBatch.Draw(this._sprite, this._rectangle, Color.White);
             }
 
             base.draw(spriteBatch);
-        }
+        }*/
 
     }
 

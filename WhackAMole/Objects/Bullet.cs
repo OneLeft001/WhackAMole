@@ -15,7 +15,7 @@ namespace WhackAMole.Objects
         private Texture2D _bulletTexture;
         private Rectangle _bulletRectangle;
 
-        private Vector2 _position = new Vector2(40, 40);
+        public Vector3 _position { get; set; }
 
         public Bullet(Texture2D texture) 
         {
@@ -39,10 +39,10 @@ namespace WhackAMole.Objects
 
             if (_bulletTexture != null) 
             {
-                _bulletRectangle = new Rectangle((int)_position.X, (int)_position.Y, _bulletTexture.Width, _bulletTexture.Height);
+                _bulletRectangle = new Rectangle((int)_position.X, (int)_position.Y, _bulletTexture.Width / 2, _bulletTexture.Height / 2);
 
                 spriteBatch.Draw(_bulletTexture, _bulletRectangle, Color.White);
-                Debug.WriteLine("Bullets are drawing");
+                
 
             }
 
