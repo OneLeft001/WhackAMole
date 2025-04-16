@@ -24,7 +24,7 @@ namespace WhackAMole
             
             for (int i = 0; i < _bulletCount; i++) 
             {
-                _bulletsNotInUse.Add(new Bullet(_bulletTexture));
+                _bulletsNotInUse.Add(new Bullet(_bulletTexture, this));
                 //Debug.WriteLine(_bulletTexture); // is not null
             }
 

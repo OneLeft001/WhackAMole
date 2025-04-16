@@ -87,6 +87,11 @@ namespace WhackAMole.ObjectPools
 
             
             initilizeEnemies();
+            foreach (Bullet bullet in _bulletPool.getBullets()) 
+            {
+                bullet.update(gameTime);
+            }
+
                 
             
 

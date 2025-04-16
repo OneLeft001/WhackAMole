@@ -98,7 +98,7 @@ namespace WhackAMole
 
         }
 
-        public void SetTimer(GameTime gameTime, float extraTime)
+        public virtual void SetTimer(GameTime gameTime, float extraTime)
         {
 
             var rand = new Random();
