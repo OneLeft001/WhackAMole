@@ -202,6 +202,10 @@ namespace WhackAMole
                     bullet.draw(spriteBatch);
 
                 }
+                foreach(Bullet bullet in _enemyPool.GetBulletPool().getBullets())
+                {
+                    bullet.draw(spriteBatch);
+                }
 
             }
 

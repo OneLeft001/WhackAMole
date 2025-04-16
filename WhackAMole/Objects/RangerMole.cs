@@ -31,6 +31,8 @@ namespace WhackAMole
 
 
                 _bulletInUse = _bulletPoolReference.getBulletsNotInUse()[0];
+                _bulletPoolReference.getBulletsNotInUse().Remove(_bulletInUse);
+                _bulletPoolReference.getBullets().Add(_bulletInUse);
                 _bulletInUse._position = new Vector3(this._rectangle.X, this._rectangle.Y, 2);
                 count = 1;
                 
