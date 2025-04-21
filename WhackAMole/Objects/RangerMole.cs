@@ -35,7 +35,7 @@ namespace WhackAMole
             if (count == 0 && _bulletPoolReference != null && _bulletPoolReference.getBulletsNotInUse().Count > 0)
             {
                 _random = new Random();
-                _pullBulletAtTime = _random.Next((int)_timer, (int)(_timer + (float)gameTime.TotalGameTime.TotalSeconds) - 1);
+                //_pullBulletAtTime = _random.Next((int)gameTime.TotalGameTime.TotalSeconds + 1, (int)_timer);
 
                 /*_bulletInUse = _bulletPoolReference.getBulletsNotInUse()[0];
                 _bulletPoolReference.getBulletsNotInUse().Remove(_bulletInUse);
@@ -52,7 +52,8 @@ namespace WhackAMole
                 _bulletInUse = _bulletPoolReference.getBulletsNotInUse()[0];
                 _bulletPoolReference.getBulletsNotInUse().Remove(_bulletInUse);
                 _bulletPoolReference.getBullets().Add(_bulletInUse);
-                _bulletInUse._position = new Vector3(this._rectangle.X, this._rectangle.Y, 2);
+                _bulletInUse._position = new Vector2(this._rectangle.X, this._rectangle.Y);
+                _bulletInUse.IsActive = true;
 
                 count = 2;
 

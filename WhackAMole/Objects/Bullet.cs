@@ -15,18 +15,24 @@ namespace WhackAMole.Objects
 
         private Texture2D _bulletTexture;
         private Rectangle _bulletRectangle;
-
-        private BulletPool _bulletPoolRef;
         
 
-        public Vector3 _position { get; set; }
+        private BulletPool _bulletPoolRef;
+
+        public bool IsActive { get; set; }
+        private bool _firstActivation = false;
+
+        private Vector2 _cursorPosition;
+        private float _speed = 25f;
+
+        public Vector2 _position { get; set; }
 
         public Bullet(Texture2D texture, BulletPool bulletPool) 
         {
 
             _bulletTexture = texture;
             _bulletPoolRef = bulletPool;
-            
+            IsActive = false;
 
         }
 
@@ -36,9 +42,30 @@ namespace WhackAMole.Objects
             // Needs to damage player when collided with the cursor.
             // And goes back to being inactive in BulletPool.
             // Also become inactive if it goes off screen.
+
+            if (IsActive && !_firstActivation)
+            {
+
+                // get pos of cursor
+                // normalize to move towards
+                _cursorPosition = Mouse.GetState().Position.ToVector2();
+                _cursorPosition.Normalize();
+                //_cursorPosition.ToVector2().Normalize();
+
+                _firstActivation = true;
+
+            }
+
+            if (IsActive && _firstActivation)
+            {
+                //_cursorPosition.Normalize();
+                _position += _cursorPosition  * (float)gameTime.ElapsedGameTime.TotalSeconds * _speed;
+
+            }
+
             if (_bulletRectangle.Contains(Mouse.GetState().Position)) {
 
-                _position = new Vector3(1000, 1000, 0);
+                _position = new Vector2(1000, 1000);
                 //_bulletPoolRef.getBullets().Remove(this); // cannot modify without error in other updates
                 //_bulletPoolRef.getBulletsNotInUse().Add(this);
                 
