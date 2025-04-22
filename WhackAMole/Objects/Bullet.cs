@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WhackAMole.Managers;
 
 namespace WhackAMole.Objects
 {
@@ -23,7 +24,8 @@ namespace WhackAMole.Objects
         private bool _firstActivation = false;
 
         private Vector2 _cursorPosition;
-        private float _speed = 25f;
+        
+        private float _speed = 15f;
 
         public Vector2 _position { get; set; }
 
@@ -48,9 +50,13 @@ namespace WhackAMole.Objects
 
                 // get pos of cursor
                 // normalize to move towards
-                _cursorPosition = Mouse.GetState().Position.ToVector2();
+                //_cursorPosition = Mouse.GetState().Position.ToVector2();
+                _cursorPosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+                Debug.WriteLine("Mouse pos: " + _cursorPosition);
+
                 _cursorPosition.Normalize();
                 //_cursorPosition.ToVector2().Normalize();
+                Debug.WriteLine("Mouse pos Normalized: " + _cursorPosition);
 
                 _firstActivation = true;
 
@@ -58,14 +64,25 @@ namespace WhackAMole.Objects
 
             if (IsActive && _firstActivation)
             {
-                //_cursorPosition.Normalize();
-                _position += _cursorPosition  * (float)gameTime.ElapsedGameTime.TotalSeconds * _speed;
+                _cursorPosition.Normalize();
+
+                if (_position.X < _cursorPosition.X)
+                {
+                    _position += _cursorPosition * (float)gameTime.ElapsedGameTime.TotalSeconds * _speed;
+                }
+                else
+                {
+                    _position -= _cursorPosition * (float)gameTime.ElapsedGameTime.TotalSeconds * _speed;
+                }
+                
 
             }
 
             if (_bulletRectangle.Contains(Mouse.GetState().Position)) {
 
                 _position = new Vector2(1000, 1000);
+                IsActive = false;
+                _firstActivation = false;
                 //_bulletPoolRef.getBullets().Remove(this); // cannot modify without error in other updates
                 //_bulletPoolRef.getBulletsNotInUse().Add(this);
                 
