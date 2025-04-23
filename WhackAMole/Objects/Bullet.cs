@@ -50,21 +50,40 @@ namespace WhackAMole.Objects
 
                 // get pos of cursor
                 // normalize to move towards
-                //_cursorPosition = Mouse.GetState().Position.ToVector2();
-                _cursorPosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+                _cursorPosition = Mouse.GetState().Position.ToVector2();
+                /*_cursorPosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
                 Debug.WriteLine("Mouse pos: " + _cursorPosition);
 
                 _cursorPosition.Normalize();
                 //_cursorPosition.ToVector2().Normalize();
                 Debug.WriteLine("Mouse pos Normalized: " + _cursorPosition);
-
+                */
                 _firstActivation = true;
+
+                //var rotation = MathHelper.ToRadians(_cursorPosition.X);
+                //_cursorPosition = new((float)Math.Sin(rotation), (float)-Math.Cos(rotation));
+                
+                
+                var toMouse = _cursorPosition - _position;
+                var rotation = (float)Math.Atan2(toMouse.X, toMouse.Y);
+                _cursorPosition = new((float)Math.Cos(rotation), (float)Math.Sin(rotation));
+                
+                //_cursorPosition.Normalize();
 
             }
 
             if (IsActive && _firstActivation)
             {
-                _cursorPosition.Normalize();
+                /*
+                var toMouse = _cursorPosition - _position;
+                var rotation = (float)Math.Atan2(toMouse.X, toMouse.Y);
+                _cursorPosition = new((float)Math.Sin(rotation), (float)-Math.Cos(rotation));
+                */
+
+
+                //_cursorPosition.Normalize();
+                _position += _cursorPosition * _speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                /*_cursorPosition.Normalize();
 
                 if (_position.X < _cursorPosition.X)
                 {
@@ -74,7 +93,7 @@ namespace WhackAMole.Objects
                 {
                     _position -= _cursorPosition * (float)gameTime.ElapsedGameTime.TotalSeconds * _speed;
                 }
-                
+                */
 
             }
 
