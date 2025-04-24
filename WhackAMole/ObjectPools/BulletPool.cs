@@ -13,6 +13,7 @@ namespace WhackAMole
         private static Texture2D _bulletTexture;
         private List<Bullet> _bulletsNotInUse;
         private List<Bullet> _bulletsInUse;
+        public List<Bullet> _removeFromInUse;
         private int _bulletCount = 10;
 
         public void initilize()
@@ -20,6 +21,7 @@ namespace WhackAMole
 
             _bulletsInUse = new List<Bullet>();
             _bulletsNotInUse = new List<Bullet>();
+            _removeFromInUse = new List<Bullet>();
 
             
             for (int i = 0; i < _bulletCount; i++) 
@@ -40,6 +42,8 @@ namespace WhackAMole
 
         public List <Bullet> getBulletsNotInUse() { return _bulletsNotInUse; }
         public List<Bullet> getBullets() { return _bulletsInUse; }
+
+        //public List<Bullet> getBulletsToRemove() { return _removeFromInUse; }
 
     }
 

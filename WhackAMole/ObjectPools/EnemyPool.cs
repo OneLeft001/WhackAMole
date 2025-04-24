@@ -23,6 +23,7 @@ namespace WhackAMole.ObjectPools
 
         private List<Enemy> inactiveEnemies;
         private List<Enemy> activeEnemies;
+        
 
         private BulletPool _bulletPool; //= new BulletPool();
 
@@ -48,6 +49,7 @@ namespace WhackAMole.ObjectPools
 
             inactiveEnemies = new List<Enemy>();
             activeEnemies = new List<Enemy>();
+            
 
             /*for (int i = 0; i < numberOfEnemies; i++) 
             {
@@ -92,7 +94,26 @@ namespace WhackAMole.ObjectPools
                 bullet.update(gameTime);
             }
 
-                
+            foreach (Bullet bullet in _bulletPool.getBullets())
+            {
+
+                if(bullet.IsActive == false)
+                {
+
+                    _bulletPool._removeFromInUse.Add(bullet);
+
+                }
+
+            }
+
+            foreach(Bullet bullet in _bulletPool._removeFromInUse)
+            {
+
+                _bulletPool.getBullets().Remove(bullet);
+
+            }
+            
+            _bulletPool._removeFromInUse = new List<Bullet>();
             
 
         }
