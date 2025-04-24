@@ -115,7 +115,7 @@ namespace WhackAMole
 
             if (_hole != null)
             {
-                //spriteBatch.Draw(_hole, new Rectangle((int)_position.X, (int)_position.Y, _hole.Width / 2, _hole.Height / 2), Color.White);
+                //spriteBatch.Draw(_hole, new Rectangle((int)Position.X, (int)Position.Y, _hole.Width / 2, _hole.Height / 2), Color.White);
                 spriteBatch.Draw(_hole, _rectangle, Color.White);
 
             }

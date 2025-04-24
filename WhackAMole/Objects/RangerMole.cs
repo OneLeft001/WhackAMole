@@ -41,7 +41,7 @@ namespace WhackAMole
                 /*_bulletInUse = _bulletPoolReference.getBulletsNotInUse()[0];
                 _bulletPoolReference.getBulletsNotInUse().Remove(_bulletInUse);
                 _bulletPoolReference.getBullets().Add(_bulletInUse);
-                _bulletInUse._position = new Vector3(this._rectangle.X, this._rectangle.Y, 2); */
+                _bulletInUse.Position = new Vector3(this._rectangle.X, this._rectangle.Y, 2); */
                 count = 1;
                 
 
@@ -53,7 +53,7 @@ namespace WhackAMole
                 _bulletInUse = _bulletPoolReference.getBulletsNotInUse()[0];
                 _bulletPoolReference.getBulletsNotInUse().Remove(_bulletInUse);
                 _bulletPoolReference.getBullets().Add(_bulletInUse);
-                _bulletInUse._position = new Vector2(this._rectangle.X, this._rectangle.Y);
+                _bulletInUse.Position = new Vector2(this._rectangle.X, this._rectangle.Y);
                 _bulletInUse.IsActive = true;
 
                 count = 2;
@@ -79,7 +79,7 @@ namespace WhackAMole
             if(_bulletPoolReference != null && _bulletInUse != null)
             {
                 
-                //_bulletInUse._position = new Vector3(this._rectangle.X, this._rectangle.Y, 2);//this._rectangle.Location.ToVector2();
+                //_bulletInUse.Position = new Vector3(this._rectangle.X, this._rectangle.Y, 2);//this._rectangle.Location.ToVector2();
                 _bulletInUse.draw(spriteBatch);
                 spriteBatch.Draw(this._sprite, this._rectangle, Color.White);
             }
